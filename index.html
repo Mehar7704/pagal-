@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#d92d55">
+  <title>Pagal ❤️ Muhtrma — Photo Puzzle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="wood">
+  <div class="ambient" aria-hidden="true"><span>♥</span><span>✦</span><span>♥</span><span>✧</span><span>♥</span></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Pagal and Muhtrma home"><span class="brand-heart">♥</span><span>Pagal <i>♡</i> Muhtrma</span></a>
+    <div class="top-actions">
+      <label class="theme-label" for="themeSelect">Theme</label>
+      <select id="themeSelect" aria-label="Choose game theme">
+        <option value="wood">Wooden</option>
+        <option value="romantic">Romantic</option>
+        <option value="galaxy">Galaxy</option>
+      </select>
+      <button id="musicBtn" class="icon-btn" type="button" title="Toggle music" aria-label="Toggle music">♫</button>
+      <button id="fullscreenBtn" class="icon-btn" type="button" title="Toggle fullscreen" aria-label="Toggle fullscreen">⛶</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="intro">
+      <p class="eyebrow">A LITTLE WORLD MADE JUST FOR YOU</p>
+      <h1>Complete the <span>puzzle!</span></h1>
+      <p class="subtitle">Har tukra apni jagah par… aur har muskurahat bohat khaas. ❤️</p>
+    </section>
+
+    <section class="controls card">
+      <div class="control-group">
+        <label for="photoSelect">Choose a saved photo</label>
+        <select id="photoSelect">
+          <option value="1">Photo 1 · Pagal Ki Jan</option>
+          <option value="2">Photo 2 · Romantic Couple</option>
+          <option value="3">Photo 3 · Gazali Ankhein</option>
+          <option value="4">Photo 4 · Zulfon Wali</option>
+          <option value="5">Photo 5 · Rose Garden Memories</option>
+          <option value="6">Photo 6 · Pagal Ki Jan</option>
+          <option value="7">Photo 7 · I Love You</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="puzzleMode">Puzzle type</label>
+        <select id="puzzleMode">
+          <option value="square">Classic photo puzzle</option>
+          <option value="heart">Heart-shaped puzzle</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty">
+          <option value="3">Easy · 9 pieces</option>
+          <option value="4" selected>Normal · 16 pieces</option>
+          <option value="5">Medium · 25 pieces</option>
+          <option value="6">Hard · 36 pieces</option>
+          <option value="8">Expert · 64 pieces</option>
+        </select>
+      </div>
+      <div class="control-actions">
+        <button id="continueBtn" class="secondary-btn" type="button">▶ Continue Game</button>
+        <button id="newGameBtn" class="primary-btn" type="button">Shuffle &amp; Start ✨</button>
+        <button id="saveBtn" class="secondary-btn" type="button">💾 Save Progress</button>
+      </div>
+    </section>
+
+    <section class="game-layout">
+      <div class="board-card card">
+        <div class="section-heading">
+          <div><p class="eyebrow">YOUR PHOTO</p><h2 id="boardTitle">Put the pieces together</h2></div>
+          <button id="hintBtn" class="secondary-btn" type="button">Show hint</button>
+        </div>
+        <div id="board" class="puzzle-board" aria-label="Puzzle board"></div>
+        <p id="boardHelp" class="help-text">Drag a piece from the tray into its matching place. On touch screens, tap a piece, then tap its destination.</p>
+      </div>
+
+      <aside class="side-column">
+        <div class="stats card">
+          <div class="stat"><span class="stat-number" id="moves">0</span><span class="stat-label">Moves</span></div>
+          <div class="stat"><span class="stat-number" id="placed">0/16</span><span class="stat-label">Placed</span></div>
+          <div class="stat"><span class="stat-number" id="timer">00:00</span><span class="stat-label">Time</span></div>
+        </div>
+        <div class="tray-card card">
+          <div class="section-heading tray-heading"><div><p class="eyebrow">PUZZLE PIECES</p><h2>Find their places</h2></div></div>
+          <div id="tray" class="piece-tray" aria-label="Scrambled puzzle pieces"></div>
+        </div>
+        <div class="message-card card">
+          <span class="message-heart">♡</span>
+          <p>“Muhtrma Ji, aap har tasveer ko khoobsurat aur har lamhay ko yaadgaar bana deti hain.”</p>
+          <strong>— Aap ka Pagal ❤️</strong>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="winModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+    <div class="modal-card">
+      <div class="win-confetti" aria-hidden="true">✦ ♥ ✧ ♥ ✦</div>
+      <p class="eyebrow">YOU DID IT!</p>
+      <h2 id="winTitle">Puzzle complete, Muhtrma Ji! ❤️</h2>
+      <p class="win-copy">Aap ne saaray tukray jor diye! Yaad rakhein, aap ki muskurahat Pagal ke liye bohat khaas hai.</p>
+      <div class="win-stats"><span id="finalMoves">Moves: 0</span><span id="finalTime">Time: 00:00</span></div>
+      <p class="signature">Pagal Ki Jan Hain Aap ♡</p>
+      <div class="modal-actions"><button id="nextLevelBtn" class="primary-btn" type="button">Next Level →</button><button id="playAgainBtn" class="secondary-btn" type="button">Play again</button><button id="closeModalBtn" class="secondary-btn" type="button">Close</button></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <audio id="backgroundMusic" loop preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
